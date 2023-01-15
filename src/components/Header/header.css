@@ -1,0 +1,96 @@
+.App-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom-width: 0.1px;
+    
+}
+
+.spot_headline{
+
+}
+
+a:-webkit-any-link {
+    color: rgb(92, 176, 170);
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.btnstyle{
+    border-radius: 7px;
+    height: 34px;
+    margin-top: 37px;
+    background-color: rgba(167, 220, 216, 0.612);
+}
+
+.searchform {
+    margin-top: 37px !important;
+    height: 31px;
+    background-color: white;
+    border-radius: 26px;
+}
+.btnstylesearch {
+    border-radius: 18px;
+    height: 34px;
+    margin-top: -1px;
+    margin-left: -11px;
+    border-left-color: white;
+    border-color: rgba(92, 176, 170,0.5);
+    background-color: rgba(92, 176, 170,0.5);;
+}
+.inputstyle{
+    height: 27px;
+    border-right: none;
+    /* margin-left: 62px; */
+    border-top-left-radius: 71px;
+    border-bottom-left-radius: 71px;
+}
+
+.dropbtn {
+    background-color: rgba(167, 220, 216, 0.612);
+    height: 34px;
+    color: black;
+    padding: 10px;
+    font-size: 13px;
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 7px;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 1px 1px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: rgba(92, 176, 170,0.5);;
+  }
