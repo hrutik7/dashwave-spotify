@@ -2,14 +2,17 @@ import { createReducer } from "@reduxjs/toolkit";
 import axios from "axios";
 const initailState = {
     c:0,
-    country :"US"
+    country :"US",
+    songs : []
 }
 
 export const customReducer = createReducer(initailState,{
         increment : (state,action) =>{
             state.c +=1
         },
-
+        songs : (state,action) =>{
+            state.songs = action.payload
+        },
         incrementByvalue : (state,action) =>{
             // state.c +=1,
             state.c = action.payload

@@ -25,7 +25,7 @@ const RESPONSE_TYPE = "token";
     console.log(client,"CLIENT_ID")
     const getmarketdata = await fetch(`https://api.spotify.com/v1/markets`,{
       headers: {
-        Authorization: `Bearer BQCu3sganu-0Q1NQfYJXIL-_BN-8cX8oNjPZzBdHr5Nf47vMpELYIdZ9T-asMcTU18j8QzEp-cYWtV28ctQ1B4vKjAxnSpBoAGAL5U0B0SJSD_a1Bt6WgUGSAxMvT4hp4DKOJq5zZfCqeJTXGg1KI31hjRzRV2C_hLfMDRtFtu-yyfE1XPVuh6Z0fWbYNC0XjgY`
+        Authorization: `Bearer ${token}`
     },
     })
     const getmarketjson = await getmarketdata.json()
@@ -106,6 +106,11 @@ const RESPONSE_TYPE = "token";
     
         const resdata = await data.json()
     console.log(resdata)
+    
+    dispatch({
+      type:"songs",
+      payload : resdata
+    })
         setArtists(resdata.artists.items)
         }
         catch(e){
