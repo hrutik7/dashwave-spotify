@@ -6,17 +6,7 @@ const initailState = {
 }
 
 export const customReducer = createReducer(initailState,{
-        increment : (state,action) =>{
-            state.c +=1
-        },
-
-        incrementByvalue : (state,action) =>{
-            // state.c +=1,
-            state.c = action.payload
-        },
-        decrement : (state,action) =>{
-            state.c -= 1
-        },
+        
         getcountry : (state,action)=>{
             state.country = "US"
         }
