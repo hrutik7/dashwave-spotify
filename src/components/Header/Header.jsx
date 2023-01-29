@@ -66,7 +66,7 @@ const RESPONSE_TYPE = "token";
 
       const apicall = async () =>{
         try{
-          const data = await fetch(`https://api.spotify.com/v1/search?query=${searchKey}&type=artist&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=20`, {
+          const data = await fetch(`https://api.spotify.com/v1/search?query=${searchKey}&type=artist&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=200`, {
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -78,7 +78,7 @@ const RESPONSE_TYPE = "token";
     
         const resdata = await data.json()
     // console.log(resdata)
-        setArtists(resdata.artists.items)
+        // setArtists(resdata.artists.items)
         }
         catch(e){
     console.log(e,"err")
@@ -109,7 +109,7 @@ const RESPONSE_TYPE = "token";
     
     dispatch({
       type:"songs",
-      payload : resdata
+      payload : resdata.artists
     })
         setArtists(resdata.artists.items)
         }
@@ -147,7 +147,7 @@ const RESPONSE_TYPE = "token";
   </div>
   </div>
           <form className='searchform' onSubmit={searchArtists}>
-    <input type="text" className='inputstyle' onChange={e => setSearchKey(e.target.value)}/>
+    <input type="text" placeholder='Enter artist name' className='inputstyle' onChange={e => setSearchKey(e.target.value)}/>
     <button className='btnstylesearch' type={"submit"}>Search</button>
     
 </form>
