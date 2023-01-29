@@ -21,7 +21,7 @@ export const customReducer = createReducer(initailState,{
             state.c -= 1
         },
         getcountry : (state,action)=>{
-            state.country = "US"
+            state.country = action.payload
         }
 })
 

@@ -11,7 +11,7 @@ const Songs = () => {
 // const {seachsong} = useSelector(state => state.songs)
 // const [getSong,setGetSong] = useState([])
 // setGetSong()
-
+const {country} = useSelector(state => state?.custom?.country)
 const songs = useSelector(state => {
 
 // console.log(state.custom.songs.artists.items,"state")
@@ -33,7 +33,7 @@ console.log(songs,typeof(songs),"ban")
     try {
       console.log(token,"token in songs")
       const data = await fetch(
-        `https://api.spotify.com/v1/search?query=${searchKey}&type=artist&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=50`,
+        `https://api.spotify.com/v1/search?query=${searchKey}&type=artist&locale=${country}%2Cen%3Bq%3D0.9&offset=0&limit=50`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -95,35 +95,7 @@ console.log(songs,typeof(songs),"ban")
         )
 })
       }
-      {/* {Object.keys(c).map((artist) => (
-        <div key={artist.id} className="songcard">
-          {artist.images.length ? (
-            <div className="cardimg">
-              <img
-                width={"100%"}
-                style={{
-                  borderTopLeftRadius: "7px",
-                  borderTopRightRadius: "7px",
-                }}
-                src={artist.images[0].url}
-                alt=""
-              />
-            </div>
-          ) : (
-            <div>No Image</div>
-          )}
-          <p
-            style={{
-              fontSize: "10px",
-              textAlign: "center",
-              alignItems: "flex-end",
-              justifyContent: "flex-end",
-            }}
-          >
-            {artist.name}
-          </p>
-        </div>
-      ))} */}
+      
     </div>
   );
 };

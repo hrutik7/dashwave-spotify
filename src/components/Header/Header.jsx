@@ -10,7 +10,7 @@ const Header = () => {
   const [markets,setMarkets] = useState([])
   const dispatch = useDispatch()
   const {c} = useSelector(state => state.custom)
-  const {country} = useSelector(state => state.custom)
+  const {country} = useSelector(state => state.custom.country)
 
 
 const client = process.env.REACT_APP_CLIENT_ID
@@ -22,7 +22,8 @@ const RESPONSE_TYPE = "token";
     marketdata()
   },[])
   const marketdata = async() =>{
-    console.log(client,"CLIENT_ID")
+    let token = window.localStorage.getItem("token");
+    
     const getmarketdata = await fetch(`https://api.spotify.com/v1/markets`,{
       headers: {
         Authorization: `Bearer ${token}`
@@ -30,18 +31,22 @@ const RESPONSE_TYPE = "token";
     })
     const getmarketjson = await getmarketdata.json()
     
-    Object.keys(getmarketjson).map((i)=>getmarketjson[i])
-    setMarkets(getmarketjson)
+    
+    
+    setMarkets(getmarketjson.markets)
   }
   const addBtn=()=>{
     dispatch({
       type:"increment"
     })
-    console.log(c,">>>>>>>>>>>>>>>>???????????")
+ 
   }
-  const countryFetch=()=>{
+  const countryFetch=(selectednation)=>{
+    
+    console.log(selectednation,"selectednation")
     dispatch({
-      type:"getcountry"
+      type:"getcountry",
+      payload:selectednation
     })
     console.log(country,"contry got")
   }
@@ -66,7 +71,7 @@ const RESPONSE_TYPE = "token";
 
       const apicall = async () =>{
         try{
-          const data = await fetch(`https://api.spotify.com/v1/search?query=${searchKey}&type=artist&locale=en-US%2Cen%3Bq%3D0.9&offset=0&limit=200`, {
+          const data = await fetch(`https://api.spotify.com/v1/search?query=${searchKey}&type=artist&locale=${country}%2Cen%3Bq%3D0.9&offset=0&limit=200`, {
             headers: {
                 Authorization: `Bearer ${token}`
             },
@@ -132,20 +137,37 @@ const RESPONSE_TYPE = "token";
           </div>
         ) : (<>
           <div className="dropdown">
-  <button className="dropbtn">Filter</button>
+  <button className="dropbtn">Country</button>
   <div className="dropdown-content">
-  <li><a onMouseEnter={countryFetch}>Country</a>
+  
+  
   {
-    // console.log(markets,"jow")
-    // markets.markets.map(market => console.log(market.name))
-
-
-}
-  <ul style={{color:"black"}}>aa</ul>
+  markets.map((market,index)=>{
+    // console.log(markets[index])
+    return (
+      <li key={index} onClick={()=>countryFetch(markets[index])}><a >{markets[index]}</a>
+  
   </li>  
-   <li><a href="#">popularity</a></li> 
+    )
+  })
+  }
   </div>
   </div>
+
+
+  <div className="dropdown">
+  <button className="dropbtn">Popularity</button>
+  <div className="dropdown-content">
+  <li>
+  <a >Low to high</a>
+ 
+  </li>  
+   <li>
+   <a >high to low</a>
+    </li> 
+  </div>
+  </div>
+  
           <form className='searchform' onSubmit={searchArtists}>
     <input type="text" placeholder='Enter artist name' className='inputstyle' onChange={e => setSearchKey(e.target.value)}/>
     <button className='btnstylesearch' type={"submit"}>Search</button>
