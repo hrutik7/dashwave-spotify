@@ -146,7 +146,10 @@ const RESPONSE_TYPE = "token";
 markets !== undefined  ?  markets.map((market,index)=>{
     // console.log(markets[index])
     return (
-      <li key={index} onClick={()=>countryFetch(markets[index])}><a >{markets[index]}</a>
+      
+      <li key={index} 
+     
+      onClick={()=>countryFetch(markets[index])}><a >{markets[index]}</a>
   
   </li> 
     )
