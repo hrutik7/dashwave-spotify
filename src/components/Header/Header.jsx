@@ -70,6 +70,7 @@ const RESPONSE_TYPE = "token";
       }, []);
 
       const apicall = async () =>{
+        let token = window.localStorage.getItem("token");
         try{
           const data = await fetch(`https://api.spotify.com/v1/search?query=${searchKey}&type=artist&locale=${country}%2Cen%3Bq%3D0.9&offset=0&limit=200`, {
             headers: {
@@ -140,17 +141,17 @@ const RESPONSE_TYPE = "token";
   <button className="dropbtn">Country</button>
   <div className="dropdown-content">
   
-  
   {
-  markets.map((market,index)=>{
+
+markets !== undefined  ?  markets.map((market,index)=>{
     // console.log(markets[index])
     return (
       <li key={index} onClick={()=>countryFetch(markets[index])}><a >{markets[index]}</a>
   
-  </li>  
+  </li> 
     )
-  })
-  }
+  }) : null 
+  } 
   </div>
   </div>
 

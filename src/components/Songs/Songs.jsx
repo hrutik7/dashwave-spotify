@@ -6,34 +6,26 @@ const Songs = () => {
   // const [token, setToken] = useState("");
   const [searchKey, setSearchKey] = useState("rock");
   const [artists, setArtists] = useState([]);
-  const token = window.localStorage.getItem("token");
+  
+  
 //   const {c} = useSelector(state => state.custom)
 // const {seachsong} = useSelector(state => state.songs)
 // const [getSong,setGetSong] = useState([])
 // setGetSong()
 const {country} = useSelector(state => state?.custom?.country)
-const songs = useSelector(state => {
 
-// console.log(state.custom.songs.artists.items,"state")
-// state.custom.songs.length > 0 ? return state?.custom?.songs?.artists?.items : 
-if(state?.custom?.songs?.items?.length > 0){
-  return state?.custom?.songs?.items
-}else{
-  console.log("else")
-  return []
-}
-})
-console.log(songs,typeof(songs),"ban")
   useEffect(() => {
     apicall();
   }, []);
   const dispatch = useDispatch()
   const apicall = async () => {
     // console.log(c,"pops linkh")
+   
     try {
-      console.log(token,"token in songs")
+      const token = window.localStorage.getItem("token");
+      console.log(token,typeof(token),"token in songs")
       const data = await fetch(
-        `https://api.spotify.com/v1/search?query=${searchKey}&type=artist&locale=${country}%2Cen%3Bq%3D0.9&offset=0&limit=50`,
+        `https://api.spotify.com/v1/search?query=linkin&type=artist`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -46,7 +38,7 @@ console.log(songs,typeof(songs),"ban")
       );
 
       const resdata = await data.json();
-      // console.log(resdata,"resd");
+      console.log(resdata,typeof(tokenstring),"resd");
       const {artists} = resdata.artists.items
       console.log(resdata.artists.items,"master")
       setArtists(resdata.artists.items);
@@ -58,7 +50,18 @@ console.log(songs,typeof(songs),"ban")
       console.log(e, "err");
     }
   };
+  const songs = useSelector(state => {
 
+    // console.log(state.custom.songs.artists.items,"state")
+    // state.custom.songs.length > 0 ? return state?.custom?.songs?.artists?.items : 
+    if(state?.custom?.songs?.items?.length > 0){
+      return state?.custom?.songs?.items
+    }else{
+      console.log("else")
+      return []
+    }
+    })
+    console.log(songs,typeof(songs),"ban")
   return (
     <div className="songcontainer">
       {
