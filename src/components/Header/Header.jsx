@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect ,useState} from 'react'
 import './header.css'
 import { useDispatch, useSelector } from 'react-redux'
+import ColumnGroup from 'antd/lib/table/ColumnGroup'
 
 const Header = () => {
     const [token, setToken] = useState("");
@@ -10,7 +11,7 @@ const Header = () => {
   const [markets,setMarkets] = useState([])
   const dispatch = useDispatch()
   const {c} = useSelector(state => state.custom)
-  const {country} = useSelector(state => state.custom.country)
+  const country = useSelector(state => state.custom.country)
 
 
 const client = process.env.REACT_APP_CLIENT_ID
@@ -20,7 +21,12 @@ const auth_redirect = process.env.REACT_APP_AUTH_ENDPOINT
 const RESPONSE_TYPE = "token";
   useEffect(()=>{
     marketdata()
-  },[])
+  })
+
+  useEffect(()=>{
+    
+    apicall()
+  },[country])
   const marketdata = async() =>{
     let token = window.localStorage.getItem("token");
     
