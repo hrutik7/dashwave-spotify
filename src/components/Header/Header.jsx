@@ -144,7 +144,14 @@ const RESPONSE_TYPE = "token";
           </div>
         ) : (<>
           <div className="dropdown">
-  <button className="dropbtn">Country</button>
+  {/* <button className="dropbtn">Country</button> */}
+  <Button
+          label="Country"
+          backgroundColor="#729394"
+          size="small"
+        
+          // style={{width:"150px"}}
+          />
   <div className="dropdown-content">
   
   {
@@ -166,7 +173,14 @@ markets !== undefined  ?  markets.map((market,index)=>{
 
 
   <div className="dropdown">
-  <button className="dropbtn">Popularity</button>
+  {/* <button className="dropbtn">Popularity</button> */}
+  <Button
+          label="Popular"
+          backgroundColor="#729394"
+          size="small"
+        
+          // style={{width:"150px"}}
+          />
   <div className="dropdown-content">
   <li>
   <a >Low to high</a>
