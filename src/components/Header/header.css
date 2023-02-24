@@ -7,7 +7,7 @@
 }
 
 .spot_headline{
-
+  margin-top: -8px;
 }
 
 a:-webkit-any-link {
@@ -19,12 +19,12 @@ a:-webkit-any-link {
 .btnstyle{
     border-radius: 7px;
     height: 34px;
-    margin-top: 37px;
+    /* margin-top: 37px; */
     background-color: rgba(167, 220, 216, 0.612);
 }
 
 .searchform {
-    margin-top: 37px !important;
+    /* margin-top: 37px !important; */
     height: 31px;
     background-color: white;
     border-radius: 26px;
@@ -53,7 +53,7 @@ a:-webkit-any-link {
     padding: 10px;
     font-size: 13px;
     border: none;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     cursor: pointer;
     border-radius: 7px;
   }

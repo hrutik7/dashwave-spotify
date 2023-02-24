@@ -3,7 +3,7 @@ import { useEffect ,useState} from 'react'
 import './header.css'
 import { useDispatch, useSelector } from 'react-redux'
 import ColumnGroup from 'antd/lib/table/ColumnGroup'
-
+import { Button } from '../storybook/src/stories/Button'
 const Header = () => {
     const [token, setToken] = useState("");
   const [searchKey, setSearchKey] = useState("rock");
@@ -136,7 +136,7 @@ const RESPONSE_TYPE = "token";
         
         {!token ? (
           <div style={{display:"flex"}}>
-            <a style={{justifyContent:"center",marginTop:"33px"}}
+            <a style={{justifyContent:"center",marginTop:"10px"}}
             href={`${auth_redirect}?client_id=${client}&redirect_uri=${redirect_url}&response_type=${RESPONSE_TYPE}`}
           >
             Login to Spotify
@@ -184,9 +184,15 @@ markets !== undefined  ?  markets.map((market,index)=>{
     
 </form>
 
-          <button className='btnstyle' onClick={logout}>Logout</button>
-         
-
+          {/* <button className='btnstyle' onClick={logout}>Logout</button> */}
+         <Button
+          label="Logout"
+          backgroundColor="#729394"
+          size="small"
+          onClick={()=>{logout()}}
+          // style={{width:"150px"}}
+          />
+          
           </>
         )}
         
