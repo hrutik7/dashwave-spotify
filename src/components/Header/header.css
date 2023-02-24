@@ -26,8 +26,9 @@ a:-webkit-any-link {
 .searchform {
     /* margin-top: 37px !important; */
     height: 31px;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 26px;
+    display: flex;
 }
 .btnstylesearch {
     border-radius: 18px;
@@ -39,7 +40,7 @@ a:-webkit-any-link {
     background-color: rgba(92, 176, 170,0.5);;
 }
 .inputstyle{
-    height: 27px;
+    height: 34px;
     border-right: none;
     /* margin-left: 62px; */
     border-top-left-radius: 71px;

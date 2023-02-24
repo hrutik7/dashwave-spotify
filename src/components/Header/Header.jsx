@@ -180,8 +180,17 @@ markets !== undefined  ?  markets.map((market,index)=>{
   
           <form className='searchform' onSubmit={searchArtists}>
     <input type="text" placeholder='Enter artist name' className='inputstyle' onChange={e => setSearchKey(e.target.value)}/>
-    <button className='btnstylesearch' type={"submit"}>Search</button>
-    
+    {/* <button className='btnstylesearch' type={"submit"}>Search</button> */}
+   <div style={{marginLeft:"-2rem"}}>
+   <Button
+          label="Search"
+          backgroundColor="#729394"
+          size="small"
+          type={"submit"}
+          // style={{width:"150px"}}
+          />
+   </div>
+  
 </form>
 
           {/* <button className='btnstyle' onClick={logout}>Logout</button> */}
